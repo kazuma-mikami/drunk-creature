@@ -1,29 +1,42 @@
 import React from "react";
 import Square from "./Square";
-import { SIZE } from "../App";
-import { Table } from "react-bootstrap";
+import { SIZE } from "./Game";
+import { Position } from "../domain/entity";
 
-const Board: React.FC = () => {
+type BoardProps = {
+  image: string;
+  position: Position;
+};
+
+const Board: React.FC<BoardProps> = ({ image, position }) => {
+  const getImage = (col: number, row: number) => {
+    if (col === position.col && row === position.row) {
+      return image;
+    } else {
+      return undefined;
+    }
+  };
+
   return (
-    <Table bordered variant="dark">
+    <table id="game-board">
       <tbody>
         {Array(SIZE)
           .fill(0)
           .map((_, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 {Array(SIZE)
                   .fill(0)
                   .map((_, j) => (
-                    <td>
-                      <Square key={j} />
+                    <td key={j} >
+                      <Square image={getImage(j, i)} />
                     </td>
                   ))}
               </tr>
             );
           })}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

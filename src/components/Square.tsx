@@ -1,13 +1,24 @@
 import React from "react";
-import {Button, Image} from "react-bootstrap";
+import { Image} from "react-bootstrap";
 
-const Square: React.FC = () => {
+type SquareProps = {
+  image?: string;
+};
+
+const Square: React.FC<SquareProps> = ({ image }) => {
   return (
-      <Image src={`${process.env.PUBLIC_URL}/cockroach.jpg`} 
-      roundedCircle 
-      height={200}
-      width={200}
-      />
+    <>
+      {image ? (
+        <Image
+          src={`${process.env.PUBLIC_URL}/${image}`}
+          roundedCircle
+          height={200}
+          width={200}
+        />
+      ) : (
+        <div className="empty-content"></div>
+      )}
+    </>
   );
 };
 
