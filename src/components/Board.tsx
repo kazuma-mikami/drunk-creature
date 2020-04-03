@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Square from "./Square";
-import { SIZE } from "./Game";
 import { Position } from "../domain/entity";
+import { SizeContext } from "../contexts/SizeContext";
 
 type BoardProps = {
   image: string;
@@ -9,6 +9,8 @@ type BoardProps = {
 };
 
 const Board: React.FC<BoardProps> = ({ image, position }) => {
+  const {size} = useContext(SizeContext);
+
   const getImage = (col: number, row: number) => {
     if (col === position.col && row === position.row) {
       return image;
@@ -20,12 +22,12 @@ const Board: React.FC<BoardProps> = ({ image, position }) => {
   return (
     <table id="game-board">
       <tbody>
-        {Array(SIZE)
+        {Array(size)
           .fill(0)
           .map((_, i) => {
             return (
               <tr key={i}>
-                {Array(SIZE)
+                {Array(size)
                   .fill(0)
                   .map((_, j) => (
                     <td key={j} >

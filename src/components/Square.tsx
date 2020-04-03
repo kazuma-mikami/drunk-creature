@@ -12,8 +12,8 @@ const Square: React.FC<SquareProps> = ({ image }) => {
         <Image
           src={`${process.env.PUBLIC_URL}/${image}`}
           roundedCircle
-          height={200}
-          width={200}
+          height={50}
+          width={50}
         />
       ) : (
         <div className="empty-content"></div>

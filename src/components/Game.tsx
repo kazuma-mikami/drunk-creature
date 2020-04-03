@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
-import { getRandomPosition } from "../domain/services";
+import { getRandomPosition, walkDrunkenly } from "../domain/services";
 import { Position } from "../domain/entity";
 import { Form, Card } from "react-bootstrap";
 import PitchBar from "./PitchBar";
-
-export const SIZE = 5;
+import { SizeContext } from "../contexts/SizeContext";
+import SizeForm from "./SizeForm";
 
 const Game: React.FC = () => {
-  const [position, setPosition] = useState<Position>(getRandomPosition(SIZE));
+  const [size, setSize] = useState<number>(5);
+  const [position, setPosition] = useState<Position>(getRandomPosition(size));
   const [history, setHistory] = useState<Position[]>([position]);
   const [pitch, setPitch] = useState<number>(5000);
 
@@ -18,7 +19,7 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     let intervalId = setInterval(() => {
-      const _position = getRandomPosition(SIZE);
+      const _position = walkDrunkenly(position, size);
       setPosition(_position);
       setHistory([...history, position]);
     }, pitch);
@@ -29,15 +30,20 @@ const Game: React.FC = () => {
 
   return (
     <>
-      <Board image="cockroach.jpg" position={position} />
-      <Card style={{ margin: "50px" }}>
-        <Card.Header>設定</Card.Header>
-        <Card.Body>
-          <Form>
-            <PitchBar pitch={pitch} onChange={handleChangePitch} />
-          </Form>
-        </Card.Body>
-      </Card>
+      <SizeContext.Provider value={{ size, setSize }}>
+        <Card style={{ margin: "50px" }}>
+          <Card.Header>設定</Card.Header>
+          <Card.Body>
+            <Form>
+              <Form.Row>
+                <PitchBar pitch={pitch} onChange={handleChangePitch} />
+                <SizeForm />
+              </Form.Row>
+            </Form>
+          </Card.Body>
+        </Card>
+        <Board image="cockroach.jpg" position={position} />
+      </SizeContext.Provider>
     </>
   );
 };
