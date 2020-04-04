@@ -1,6 +1,9 @@
 import React from "react";
 import { Form, Col } from "react-bootstrap";
 
+const MAX_VALUE = 5000;
+const MIN_VALUE = 50;
+
 type PitchBarProps = {
   pitch: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,8 +15,8 @@ const PitchBar: React.FC<PitchBarProps> = ({ pitch, onChange }) => {
       <Form.Label>移動速度</Form.Label>
       <Form.Control
         type="range"
-        min="100"
-        max="10000"
+        min={MIN_VALUE}
+        max={MAX_VALUE}
         value={pitch}
         custom
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}

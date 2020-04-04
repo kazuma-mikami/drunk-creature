@@ -40,7 +40,11 @@ export const walkDrunkenly = (position: Position, size: number) => {
       return distination;
     }
   }
-  return position;
+
+  return {
+    col: position.col + (position.col > 0 ? -1 : 0),
+    row: position.row + (position.row > 0 ? -1 : 0),
+  };
 };
 
 const shuffle = ([...array]: number[]) => {
@@ -50,3 +54,14 @@ const shuffle = ([...array]: number[]) => {
   }
   return array;
 };
+
+export const countStepNum = (history: Position[], position: Position) => {
+  let step = 0;
+  for (let i = 0; i < history.length; i++) {
+    if (history[i].col === position.col &&
+      history[i].row === position.row) {
+      step++;
+    }
+  }
+  return step;
+}

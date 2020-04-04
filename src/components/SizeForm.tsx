@@ -7,7 +7,7 @@ const SizeForm: React.FC = () => {
 
   return (
     <Form.Group as={Col} controlId="exampleForm.SelectCustomSizeSm">
-      <Form.Label>盤面の大きさ</Form.Label>
+      <Form.Label>盤面の大きさ(n×n)</Form.Label>
       <Form.Control
         type="number"
         min="1"
