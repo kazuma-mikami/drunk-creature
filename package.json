@@ -71,7 +71,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepages": "https://kazuma-mikami.github.io/drunk-creature",
+  "homepage": "https://kazuma-mikami.github.io/drunk-creature",
   "eslintConfig": {
     "extends": "react-app"
   },
