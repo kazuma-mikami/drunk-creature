@@ -22,7 +22,7 @@
     "deploy" : "gh-pages -d build"
   },
 
-  "homepages": "https://kazuma-mikami.github.io/drunk-creature",
+  "homepages": "https://kazuma-mikami.github.io/drunk-creature/",
 
   "eslintConfig": {
     "extends": "react-app"
