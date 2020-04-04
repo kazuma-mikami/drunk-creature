@@ -2,6 +2,7 @@
   "name": "drunk-creature",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kazuma-mikami.github.io/drunk-creature",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
@@ -71,7 +72,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://kazuma-mikami.github.io/drunk-creature",
   "eslintConfig": {
     "extends": "react-app"
   },
