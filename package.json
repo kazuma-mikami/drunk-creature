@@ -17,8 +17,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy" : "gh-pages -d build"
   },
+
+  "homepages": "https://kazuma-mikami.github.io/drunk-creature/",
+
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -41,6 +46,7 @@
     "@types/react-bootstrap": "^0.32.20",
     "@types/react-dom": "^16.9.6",
     "bootstrap": "^4.4.1",
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
     "react-bootstrap": "^1.0.0"
   }
